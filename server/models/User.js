@@ -5,14 +5,23 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
+    unique: false,
   },
   email: {
     type: String,
     required: true,
     unique: true,
   },
+
   password: {
+    type: String,
+    required: true,
+  },
+  dateOfBirth: {
+    type: String,
+    required: true,
+  },
+  sex: {
     type: String,
     required: true,
   },
@@ -20,15 +29,16 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  photo: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Photo',
-    default: null, // or the default photo reference you want to use
-  },
+  photos: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Photo',
+    },
+ ],
+
 });
 
 userSchema.methods.comparePassword = async function (password) {
- 
   return await bcrypt.compare(password, this.password);
 };
 

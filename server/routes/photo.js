@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const Photo = require('../models/Photo'); 
+const User = require('../models/user');
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt');
 
@@ -22,16 +23,26 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-router.post('/upload', upload.single('photo'), (req, res) => {
+router.post('/upload/:userId', upload.single('photo'), async(req, res) => {
+  try{
+  const userId = req.params.userId
+  const user = await User.findById(userId);
+  if (!user) res.status(500).send('an Error has accured')
   const photo = new Photo({
     filename: req.file.filename,
-    path: req.file.path
+    path: req.file.path,
   });
   photo.save();
 
-  console.log(photo);
-  res.send('success');
+  user.photos.push(photo);
+    await user.save();
+
+ 
+  res.status(200).json({data:'success', photo});}catch(err){
+console.log(err);
+  }
 });
+
 
 
 

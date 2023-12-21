@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginPageControl, regPageControl } from '../../redux/regPageSlice';
 import { logout } from '../../redux/userSlice';
@@ -21,7 +21,10 @@ const Header = () => {
   const user = useSelector((state) => state.user.user);
 
   let isLogged = user.id != null && user.id !== '';
-
+const [minDropDown,setMinDropDown]=useState(false)
+  const minClick =()=>{
+    setMinDropDown(prev=>!prev)
+  }
  
   return (
     <div>
@@ -36,10 +39,12 @@ const Header = () => {
             aria-controls="navbarNavAltMarkup"
             aria-expanded="false"
             aria-label="Toggle navigation"
+            onClick={minClick}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          {/*  */}
+          <div className={`${!minDropDown?'collapse':''} navbar-collapse`} id="navbarNavAltMarkup">
             <div className="navbar-nav">
               <div className="nav-link" >
                 UsersList

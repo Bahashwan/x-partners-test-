@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import styles from './regForm.module.scss';
 import { userFetch } from '../../../methods/auth';
 import { useDispatch, useSelector } from 'react-redux';
-import {next} from '../../../redux/regPageSlice'
-import { setUser,setUserID } from '../../../redux/userSlice';
+import { next } from '../../../redux/regPageSlice';
+import { setUser, setUserID } from '../../../redux/userSlice';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state=>state.user.user)
+  const user = useSelector((state) => state.user.user);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -39,14 +39,13 @@ const RegistrationForm = () => {
     const data = { name, email, password, rePassword, dateOfBirth: date, sex };
     console.log(data);
     userFetch.reg(data).then((res) => {
-      if (res.success){ 
-        dispatch(setUser({name,email,dateOfBirth:date,sex}))
-        dispatch(setUserID(res.user['_id']))
-        localStorage.setItem('token', res.token)
+      if (res.success) {
+        dispatch(setUser({ name, email, dateOfBirth: date, sex }));
+        dispatch(setUserID(res.user['_id']));
+        localStorage.setItem('token', res.token);
         // alert('done');
-      dispatch(next());
-    }
-      else alert(res);
+        dispatch(next());
+      } else alert(res);
     });
   };
 
@@ -144,18 +143,13 @@ const RegistrationForm = () => {
         <option value={''} selected disabled>
           Please Chose Your Sex:
         </option>
-        <option value="male">
-          Male
-        </option>
-        <option  value="female">
-          Female
-        </option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
       </select>
       <div className={styles.submitButton}>
-
-      <button type="button" className="btn btn-primary" onClick={submit}>
-        Primary
-      </button>
+        <button type="button" className="btn btn-primary" onClick={submit}>
+          Primary
+        </button>
       </div>
     </div>
   );

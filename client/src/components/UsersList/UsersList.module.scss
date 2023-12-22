@@ -1,0 +1,12 @@
+.usersListMainDiv{
+    
+    margin: 30px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    
+    .userslist{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}}

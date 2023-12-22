@@ -25,6 +25,9 @@ const Header = () => {
     usersList: () => {
       dispatch(ulPageControl());
     },
+    userProfile: () => {
+      dispatch(upPageControl());
+    },
   };
   const user = useSelector((state) => state.user.user);
 
@@ -58,7 +61,10 @@ const Header = () => {
           >
             <div className="navbar-nav">
               <div className="nav-link" onClick={onClick.usersList}>
-                UsersList
+                Users List
+              </div>
+              <div className={`nav-link ${!isLogged ? 'disabled' : ''}`} onClick={onClick.userProfile}>
+                User Profile
               </div>
               <div
                 className={`nav-link ${isLogged ? 'disabled' : ''}`}

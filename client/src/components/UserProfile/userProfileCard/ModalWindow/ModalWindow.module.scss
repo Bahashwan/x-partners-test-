@@ -1,0 +1,44 @@
+.modalMainDiv{
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(123, 133, 155, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  .modalContent{
+      background-color: #fff;
+    padding: 20px;
+    width: 400px;
+    max-width: 90%;
+    border-radius: 5px;
+    
+  }
+  .innerDiv{
+    // position: relative;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    padding: 25px 0;
+  }
+}
+
+
+.regMain{
+    width: 30vw;
+    margin: 50px;
+}
+.inputDiv{
+    .innerInputSpan{
+        font-size: 12px;
+        width: 100px;
+        text-align: center;
+    }
+
+}
+.submitButton{
+    margin: 25px;
+}

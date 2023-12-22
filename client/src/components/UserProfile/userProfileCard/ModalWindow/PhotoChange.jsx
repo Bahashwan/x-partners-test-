@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { next } from '../../../redux/PageSlice';
-import { setUserPhoto } from '../../../redux/userSlice';
-
-const UserPhotoUploda = () => {
-  const dispatch = useDispatch();
+const PhotoChange = () => {
   const user = useSelector((state) => state.user.user);
 
   const [selectedImage, setSelectedImage] = useState(null);
@@ -27,9 +23,7 @@ const UserPhotoUploda = () => {
         },
       })
       .then((res) => {
-        console.log(res);
-        dispatch(setUserPhoto({ photo: res.data.photo.filename }));
-        dispatch(next());
+        res.data.photo.filename ? window.location.reload() : console.log(res);
       })
       .catch(function (error) {
         console.log(error);
@@ -37,8 +31,9 @@ const UserPhotoUploda = () => {
   };
 
   return (
+    // style={{display:"flex", flexDirection:"column", gap:"15px"}}
     <form onSubmit={handleSubmit} className="my-4">
-      <div className="form-group">
+      <div className="form-group" style={{ paddingBottom: '15px' }}>
         <input
           type="file"
           accept="image/*"
@@ -48,10 +43,10 @@ const UserPhotoUploda = () => {
         />
       </div>
       <button type="submit" className="btn btn-primary">
-        Upload Profile Photo
+        Upload New Photo
       </button>
     </form>
   );
 };
 
-export default UserPhotoUploda;
+export default PhotoChange;

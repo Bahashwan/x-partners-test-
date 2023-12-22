@@ -44,7 +44,7 @@ const UsersList = () => {
                   photo={`http://localhost:5000/${
                     user.photos[user.photos.length - 1].filename
                   }`}
-                  key={user.email}
+                  key={user._id}
                   age={ageCalc(user.dateOfBirth)}
                 />
               ))}

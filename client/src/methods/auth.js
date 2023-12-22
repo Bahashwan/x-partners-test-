@@ -27,4 +27,21 @@ export const userFetch = {
       return { data: error };
     }
   },
+  userEdit: async (token, data) => {
+    try {
+
+      let config = {
+        url: 'http://localhost:5000/api/auth/editUser',
+        method: 'PATCH',
+        data,
+        headers:{
+          Authorization:token
+        }
+      };
+      const res = await axios.request(config);
+      return await res.data;
+    } catch (error) {
+      return { data: error };
+    }
+  },
 };

@@ -85,7 +85,7 @@ router.patch('/editUser', authMiddleware,async (req, res) => {
   if (sex) updatedFields.sex = sex;
  
   try {
-    console.log(updatedFields);
+   
      const updatedUser = await User.updateOne(
         req.user._id,
        {

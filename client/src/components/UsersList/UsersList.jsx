@@ -8,7 +8,6 @@ import ageCalc from '../../methods/ageCalc';
 const UsersList = () => {
   const { PageSlice } = useSelector((state) => state);
   const dispatch = useDispatch();
-
   const users = [
     {
       name: 'mohanad',
@@ -41,7 +40,7 @@ const UsersList = () => {
               .map((user) => (
                 <UserCard
                   name={user.name}
-                  photo={`http://localhost:5000/${
+                  photo={`/${
                     user.photos[user.photos.length - 1].filename
                   }`}
                   key={user._id}

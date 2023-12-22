@@ -15,9 +15,8 @@ const PhotoChange = () => {
     event.preventDefault();
     const formData = new FormData();
     formData.append('photo', selectedImage);
-
     axios
-      .post(`http://localhost:5000/api/photo/upload/${user.id}`, formData, {
+      .post(`/api/photo/upload/${user.id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

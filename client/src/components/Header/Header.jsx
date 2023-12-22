@@ -41,7 +41,7 @@ const Header = () => {
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <div className="navbar-brand">Navbar</div>
+          <div className="navbar-brand">LOGO</div>
           <button
             className="navbar-toggler"
             type="button"

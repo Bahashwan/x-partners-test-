@@ -4,7 +4,7 @@ export const userFetch = {
   reg: async (data) => {
     try {
       let config = {
-        url: 'http://localhost:5000/api/auth/register',
+        url: `api/auth/register`,
         method: 'POST',
         data,
       };
@@ -17,7 +17,7 @@ export const userFetch = {
   log: async (data) => {
     try {
       let config = {
-        url: 'http://localhost:5000/api/auth/login',
+        url: '/api/auth/login',
         method: 'POST',
         data,
       };
@@ -31,7 +31,7 @@ export const userFetch = {
     try {
 
       let config = {
-        url: 'http://localhost:5000/api/auth/editUser',
+        url: '/api/auth/editUser',
         method: 'PATCH',
         data,
         headers:{

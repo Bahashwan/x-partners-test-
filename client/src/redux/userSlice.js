@@ -6,7 +6,7 @@ export const fetchUserByToken = createAsyncThunk(
   async (token, thunkAPI) => {
     try {
       const response = await axios.get(
-        'http://localhost:5000/api/auth/login/token',
+        '/api/auth/login/token',
         {
           headers: { Authorization: `${token}` },
         }
@@ -29,7 +29,7 @@ export const fetchAllUsers = createAsyncThunk(
   'user/fetchAllUsers',
   async (token, thunkAPI) => {
     try {
-      const response = await axios.get('http://localhost:5000/api/user/getAll');
+      const response = await axios.get('/api/user/getAll');
       console.log(response,'-----------');
       return response.data;
       

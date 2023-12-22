@@ -5,7 +5,6 @@ import ModalWindow from './ModalWindow/ModalWindow';
 
 const UserProfileCard = () => {
   const user = useSelector((state) => state.user.user);
-
   const [isClosed,setIsClosed] = useState(true)
   const [type,setType]=useState('')
 const toggleModal = ()=>{
@@ -31,7 +30,7 @@ password:()=>{
     <div className="card" style={{ width: '18rem' }}>
       <img
         alt="lol"
-        src={`http://localhost:5000/${
+        src={`/${
             user.photo[user.photo.length - 1].filename
         }`}
         />

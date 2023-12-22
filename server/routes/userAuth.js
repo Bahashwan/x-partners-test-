@@ -67,4 +67,36 @@ router.get('/login/token', authMiddleware, async (req, res) => {
   }
 });
 
+// 
+router.patch('/editUser', authMiddleware,async (req, res) => {
+  
+ 
+ 
+  const { name, email, password, dateOfBirth, sex } = req.body;
+  const updatedFields = {};
+ 
+  if (name) updatedFields.name = name;
+  if (email) updatedFields.email = email;
+  if (password) {
+     const salt = await bcrypt.genSalt(10);
+     updatedFields.password = await bcrypt.hash(password, salt);
+  }
+  if (dateOfBirth) updatedFields.dateOfBirth = dateOfBirth;
+  if (sex) updatedFields.sex = sex;
+ 
+  try {
+    console.log(updatedFields);
+     const updatedUser = await User.updateOne(
+        req.user._id,
+       {
+         $set: {...updatedFields},
+       }
+     );
+    
+     res.status(200).json({ msg: 'User updated successfully',updatedUser });
+  } catch (err) {
+     res.status(500).json({ error: err.message });
+  }
+ });
+
 module.exports = router;

@@ -3,7 +3,6 @@ const multer = require('multer');
 const Photo = require('../models/Photo'); 
 const User = require('../models/user');
 const { v4: uuidv4 } = require('uuid');
-const bcrypt = require('bcrypt');
 
 
 const router = express.Router();
